@@ -84,7 +84,7 @@ import ImageIO
     private let MaxPanGestureRotation: Float = GLKMathDegreesToRadians(360)
     private let radius: CGFloat = 10
     private let sceneView = SCNView()
-    private let scene = SCNScene()
+    public let scene = SCNScene()
     private let motionManager = CMMotionManager()
     private var geometryNode: SCNNode?
     private var prevLocation = CGPoint.zero
@@ -97,7 +97,7 @@ import ImageIO
 
     private var motionPaused = false
 
-    private lazy var cameraNode: SCNNode = {
+    public lazy var cameraNode: SCNNode = {
         let node = SCNNode()
         let camera = SCNCamera()
         node.camera = camera
