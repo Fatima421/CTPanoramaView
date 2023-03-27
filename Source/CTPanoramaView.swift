@@ -241,8 +241,7 @@ import ImageIO
         motionManager.deviceMotionUpdateInterval = 0.015
 
         motionPaused = false
-        motionManager.startDeviceMotionUpdates(using: .xArbitraryZVertical, to: opQueue,
-                                               withHandler: { [weak self] (motionData, error) in
+        motionManager.startDeviceMotionUpdates(using: .xMagneticNorthZVertical, to: opQueue, withHandler: { [weak self] (motionData, error) in
             guard let panoramaView = self else {return}
             guard !panoramaView.motionPaused else {return}
 
@@ -294,7 +293,7 @@ import ImageIO
 
                     }
 
-                    panoramaView.cameraNode.orientation = orientation
+                    panoramaView.cameraNode.orientation = SCNQuaternion(orientation.x + panoramaView.initialPitch, orientation.y, orientation.z, orientation.w)
 
                 }
 
