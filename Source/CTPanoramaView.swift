@@ -35,6 +35,7 @@ import ImageIO
 
     @objc public var panSpeed = CGPoint(x: 0.4, y: 0.4)
     @objc public var startAngle: Float = 0
+    @objc public var initialPitch: Float = 0
 
     @objc public var angleOffset: Float = 0 {
         didSet {
@@ -96,7 +97,7 @@ import ImageIO
     private var totalY = Float.zero
 
     private var motionPaused = false
-
+    
     public lazy var cameraNode: SCNNode = {
         let node = SCNNode()
         let camera = SCNCamera()
@@ -185,7 +186,7 @@ import ImageIO
 
     public func resetCameraAngles() {
         yFov = maxFoV
-        cameraNode.eulerAngles = SCNVector3Make(0, startAngle, 0)
+        cameraNode.eulerAngles = SCNVector3Make(initialPitch, startAngle, 0)
         totalX = Float.zero
         totalY = Float.zero
         self.reportMovement(CGFloat(startAngle), xFov.toRadians(), callHandler: false)
