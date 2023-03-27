@@ -293,7 +293,7 @@ import ImageIO
 
                     }
 
-                    panoramaView.cameraNode.orientation = SCNQuaternion(orientation.x + panoramaView.initialPitch, orientation.y, orientation.z, orientation.w)
+                    panoramaView.cameraNode.orientation = SCNQuaternion(orientation.x, orientation.y + panoramaView.initialPitch, orientation.z, orientation.w)
 
                 }
 
