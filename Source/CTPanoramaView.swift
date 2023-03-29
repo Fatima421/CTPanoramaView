@@ -151,12 +151,12 @@ import ImageIO
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
+        commonInit(cameraNode: self.cameraNode)
     }
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        commonInit()
+        commonInit(cameraNode: self.cameraNode)
     }
 
     public convenience init(frame: CGRect, image: UIImage) {
@@ -170,17 +170,17 @@ import ImageIO
             motionManager.stopDeviceMotionUpdates()
         }
     }
-
-    private func commonInit() {
+    
+    public func commonInit(cameraNode: SCNNode?) {
         add(view: sceneView)
 
-        scene.rootNode.addChildNode(cameraNode)
+        scene.rootNode.addChildNode(cameraNode ?? self.cameraNode)
 
         sceneView.scene = scene
         sceneView.backgroundColor = self.backgroundColor
 
         switchControlMethod(to: controlMethod)
-     }
+    }
 
     // MARK: Public methods
 
@@ -188,7 +188,7 @@ import ImageIO
         yFov = maxFoV
         self.initialPitch = initialPitch
         self.startAngle = startAngle
-        cameraNode.eulerAngles = SCNVector3Make(initialPitch, 40, 0)
+        cameraNode.eulerAngles = SCNVector3Make(initialPitch, startAngle, 0)
         totalX = Float.zero
         totalY = Float.zero
         self.reportMovement(CGFloat(startAngle), xFov.toRadians(), callHandler: false)
