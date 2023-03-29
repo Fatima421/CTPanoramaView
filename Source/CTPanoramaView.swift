@@ -184,8 +184,10 @@ import ImageIO
 
     // MARK: Public methods
 
-    public func resetCameraAngles() {
+    public func resetCameraAngles(initialPitch: Float = 0, startAngle: Float = 0) {
         yFov = maxFoV
+        self.initialPitch = initialPitch
+        self.startAngle = startAngle
         cameraNode.eulerAngles = SCNVector3Make(initialPitch, startAngle, 0)
         totalX = Float.zero
         totalY = Float.zero
