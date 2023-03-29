@@ -188,7 +188,7 @@ import ImageIO
         yFov = maxFoV
         self.initialPitch = initialPitch
         self.startAngle = startAngle
-        cameraNode.eulerAngles = SCNVector3Make(initialPitch, startAngle, 0)
+        cameraNode.eulerAngles = SCNVector3Make(initialPitch, 40, 0)
         totalX = Float.zero
         totalY = Float.zero
         self.reportMovement(CGFloat(startAngle), xFov.toRadians(), callHandler: false)
